@@ -1,3 +1,6 @@
+This a simple Dropdown search component. 
+Whatever data, we want in a dropdown, pass to search component .
+Here countries data is passed to search component from searchdata.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
