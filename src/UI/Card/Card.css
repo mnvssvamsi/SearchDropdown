@@ -1,0 +1,10 @@
+.Card-Data {
+    width: 300px;
+    border: 2px solid #ccc;
+    margin:  3px auto;
+    /* text-align: center; */
+    /* box-shadow: 0 2px 2px #ccc; */
+    padding: 10px 0px 20px 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
