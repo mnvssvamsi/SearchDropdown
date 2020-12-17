@@ -1,14 +1,16 @@
+.dropdown-content {
+  position: relative;
+}
 .dropbtn {
     background-color: #4CAF50;
     color: white;
+    margin: 5px;
     width: 290px;
     padding: 10px;
     font-size: 1.09rem;
     border: none;
     cursor: pointer;
-    margin: 5px;
   }
-  
   .dropbtn:hover, .dropbtn:focus {
     background-color: #3e8e41;
     outline: none;
@@ -19,7 +21,6 @@
     font-size: 16px;
     margin: 5px;
     padding: 10px;
-    /* padding: 14px 20px 12px 45px; */
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
@@ -37,14 +38,27 @@
     text-decoration: none;
     display: block;
     cursor: pointer;
-    /* border: 1px solid black; */
     border-bottom: none;
     margin: 1px 5px;
   }
-  .dropdown-content p:last-child{
-    /* border-bottom: 1px solid black; */
-}
+
   
   .dropdown-content p:hover {
     background-color: #ddd;
+    }
+
+    .addbtn{
+      background-color:  #336699;
+      color: white;
+      margin: 5px 10px;
+      padding: 5px;
+      position: absolute;
+      top: 55px;
+      right: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .addbtn:hover {
+      background-color:  #4080bf;
     }

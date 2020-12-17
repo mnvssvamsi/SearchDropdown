@@ -10,7 +10,7 @@ import Search from '../Search/Search'
     }
     return (
         <div>
-             <Search searchText="Select a Location" selected={countrySelected} inputArray={["India","Australia","Singapore","Malaysia","Sri Lanka"]} />
+             <Search searchText="Select a Location" selected={countrySelected} type="Location" inputArray={["India","Australia","Singapore","Malaysia","Sri Lanka"]} />
         </div>
     )
 }

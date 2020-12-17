@@ -6,7 +6,6 @@ const Search = (props) => {
 
     const [show, setShow] = useState(false)
     const [searchBox, setSearchBox] = useState('')
-    // const [filtered,setFiltered] = useState(false)
 
     function debounce(fn, time) {
         let timeoutId;
@@ -28,6 +27,11 @@ const Search = (props) => {
         setSearchBox(e.target.value)
     }, 1000)
 
+    let addItemHandler = () => {
+        props.inputArray.push(searchBox)
+        console.log(props.inputArray)
+    }
+
     let filteredOutput = props.inputArray.filter(item => {
         return item.toLowerCase().includes(searchBox.toLowerCase())
     })
@@ -37,7 +41,7 @@ const Search = (props) => {
             <Card >
                 <div>
                     <button className="dropbtn"
-                        onClick={dropdownHandler} > {props.searchText}
+                        onClick={dropdownHandler} > {props.searchText} 
                     </button>
                     {show ?
                         <div id="myDropdown" className="dropdown-content">
@@ -51,8 +55,11 @@ const Search = (props) => {
                                     filteredOutput.map(item => {
                                         return <p key={item} onClick={() => props.selected(item)}>{item}</p>
                                     })
-                                    :
-                                    `${searchBox} not found `
+                                    : <p>{searchBox} not found </p> 
+
+                            }
+                            {filteredOutput.length === 0 &&
+                                <button className="addbtn" onClick={addItemHandler} >Add {props.type}</button>
                             }
                         </div>
                         : null
