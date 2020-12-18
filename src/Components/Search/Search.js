@@ -6,7 +6,8 @@ const Search = (props) => {
 
     const [show, setShow] = useState(false)
     const [searchBox, setSearchBox] = useState('')
-
+    const [showMore, setShowMore] = useState(false)
+    const [addShowMore, setAddShowMore] = useState(true)
     function debounce(fn, time) {
         let timeoutId;
         return wrapper
@@ -29,37 +30,49 @@ const Search = (props) => {
 
     let addItemHandler = () => {
         props.inputArray.push(searchBox)
-        console.log(props.inputArray)
     }
+
 
     let filteredOutput = props.inputArray.filter(item => {
         return item.toLowerCase().includes(searchBox.toLowerCase())
     })
-
+    let showMoreHandler = () => {
+        setShowMore(true)
+        setAddShowMore(false)
+    }
     return (
         <div>
             <Card >
                 <div>
                     <button className="dropbtn"
-                        onClick={dropdownHandler} > {props.searchText} 
+                        onClick={dropdownHandler} > {props.searchText}
                     </button>
                     {show ?
                         <div id="myDropdown" className="dropdown-content">
                             <input className="myInput" type="text" placeholder="Search.." id="myInput" onChange={filterHandler} />
-                            {/* {props.countries.map(item => {
-                                return <p onClick={() => props.selected(item)} value={item} key={item} >{item}</p>
-                            })} */}
                             {
-                                filteredOutput.length !== 0
+                                filteredOutput.length !== 0 || filteredOutput > 5
                                     ?
-                                    filteredOutput.map(item => {
-                                        return <p key={item} onClick={() => props.selected(item)}>{item}</p>
-                                    })
-                                    : <p>{searchBox} not found </p> 
-
-                            }
-                            {filteredOutput.length === 0 &&
-                                <button className="addbtn" onClick={addItemHandler} >Add {props.type}</button>
+                                    <div>
+                                        {filteredOutput.map(item => {
+                                            return <p key={item} onClick={() => props.selected(item)}>{item}</p>
+                                        }).slice(0, 5)}
+                                        {
+                                            addShowMore && <button className="showbtn" onClick={showMoreHandler}> Show more...</button> 
+                                        }
+                                        {
+                                            showMore ?
+                                                filteredOutput.map(item => {
+                                                    return <p key={item} onClick={() => props.selected(item)}>{item}</p>
+                                                }).slice(5)
+                                                : null
+                                        }
+                                    </div>
+                                    :
+                                    <div>
+                                        <p> {`${searchBox} not found`}</p>
+                                        <button className="addbtn" onClick={addItemHandler} >Add {props.type}</button>
+                                    </div>
                             }
                         </div>
                         : null
